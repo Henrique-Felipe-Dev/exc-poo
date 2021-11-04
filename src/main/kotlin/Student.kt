@@ -1,6 +1,6 @@
 class Student (var nome: String?,
                var sobrenome: String?,
-               var ra: Int) {
+               var ra: Int)  {
 
     var nota = 0.0
     var ano = 0

@@ -2,11 +2,13 @@ class Courses (val nomeCurso: String?,
                var nomeProfessor: String?,
                var ano: Int) {
 
+    //Declaramos a lista para receber estudantes nulos
     val listaEstudantes = mutableListOf<Student?>()
 
     fun mostrarEstudantes(){
         for(i in listaEstudantes){
             println(i?.nome)
+            //O i? indica que o valor que estamos retornando pode ser nulo
         }
     }
 
@@ -16,6 +18,8 @@ class Courses (val nomeCurso: String?,
     }
 
     fun cadastrar(students: Array<Student?>?) {
+        //Para iterarmos sobre os valores de cada estudante, precisamos, aqui,
+        // nos certificar de que nenhum estudante é nulo, para evitar erros
         if (students != null) {
             for(i in students){
                 listaEstudantes.add(i)
@@ -39,8 +43,15 @@ class Courses (val nomeCurso: String?,
     }
 
     fun melhorNota(){
+        //Declaramos a variável melhor nota e passamos listaEstudantes[0]?.nota para
+        //ele. Lembrem que o ?,nesse caso, vai indicar que pode ser que o valor
+        //que queremos recuperar da listaEstudantes seja nulo. Automaticamente
+        //a variável melhor nota ficou com o tipo Double?
         var melhorNota = listaEstudantes[0]?.nota
         for(i in listaEstudantes){
+            //Como o if não pode receber valores nulos, usamos a exclamação !! para
+            //indicar que o valor que será retornado no if será convertido para
+            //um tipo não nulo
             if(i?.nota!! > melhorNota!!){
                 melhorNota = i.nota
             }
