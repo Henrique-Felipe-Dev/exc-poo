@@ -1,9 +1,13 @@
-class Courses (val nomeCurso: String?,
-               var nomeProfessor: String?,
-               var ano: Int) {
+package courses
+
+import student.Student
+
+class Courses (private val nomeCurso: String?,
+               private var nomeProfessor: String?,
+               private var ano: Int) {
 
     //Declaramos a lista para receber estudantes nulos
-    val listaEstudantes = mutableListOf<Student?>()
+    private val listaEstudantes = mutableListOf<Student?>()
 
     fun mostrarEstudantes(){
         for(i in listaEstudantes){
@@ -57,6 +61,15 @@ class Courses (val nomeCurso: String?,
             }
         }
         println("A maior nota desse curso é $melhorNota")
+    }
+
+    fun verificarAluno(student: Student?){
+        if(listaEstudantes.contains(student)){
+            println("Esse estudante existe!")
+        }else{
+            //Criamos uma exceção personalizada
+            throw Exception("O aluno não existe na lista!")
+        }
     }
 
 }

@@ -1,3 +1,6 @@
+import courses.Courses
+import student.Student
+
 fun main(args: Array<String>) {
 
     val rosnei: Student = Student("Rosnei", "da Silva",
@@ -10,6 +13,9 @@ fun main(args: Array<String>) {
         12345, 10.0, 3)
 
     val rebeca: Student = Student("Rebeca", "da Silva",
+        123456, 70.0, 1)
+
+    val genivaldo: Student = Student("Genivaldo", "da Silva",
         123456, 70.0, 1)
 
     rosnei.nomeCompleto()
@@ -34,5 +40,15 @@ fun main(args: Array<String>) {
     cursoIngles.melhorNota()
 
     cursoIngles.mostrarEstudantes()
+
+    try {
+        //Nós queremos tentar executar a função
+        //Pois caso essa nossa função dê erro, nós queremos manipular ess erro
+        //Sem a necessidade do nosso programa fechar (crashar)
+        cursoIngles.verificarAluno(genivaldo)
+    }catch (e: Exception){
+        //Nós recuperamos o exceção e exibimos a mensagem dela
+        println(e.message)
+    }
 
 }
